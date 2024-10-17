@@ -1,3 +1,13 @@
+import Question from './Question'
+
 export default function Quizz(){
-    return <h1>Here is your quizz!</h1>
+    return (
+        <div className="questions-wrapper">
+            <Question />
+            <Question />
+            <Question />
+            <Question />
+            <Question />
+        </div>
+    )
 }

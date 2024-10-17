@@ -17,3 +17,18 @@
   cursor: pointer;
 }
 
+.question-option{
+  border:  #4D5B9E 1px solid;
+  border-radius: 15px;
+  background-color: white;
+  color: #293264;
+  font-weight: bold;
+  padding: 10px 30px;
+  margin-inline: 5px;
+  cursor: pointer;
+}
+
+.question-container > hr{
+  margin-top: 10px;
+  border-color: #DBDEF0;
+}
