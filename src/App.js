@@ -1,11 +1,20 @@
 import './App.css';
+import { useState, useEffect } from 'react';
+import StartComponent from './components/StartComponent';
+import Quizz from './components/Quizz';
 
 function App() {
+  const [start, setStart] = useState(false)
+
   return (
     <div className="main-container">
-      <h1>Quizzical</h1>
-      <p>Are you ready to prove your knowledge?</p>
-      <button className="quizz-btn">Start Quizzical!</button>
+      {start?
+      <Quizz/>
+      :
+      <StartComponent
+        handleClick={() => setStart(oldValue => !oldValue)}
+      />
+    }
     </div>
   );
 }
