@@ -1,34 +1,35 @@
 export default function Question(props){
-    function handleClick(){}
-    const answers = props.incorrect_answers
-    answers.splice(Math.floor(Math.random() * answers.length), 0, props.correct_answer)
+    function handleClick(event, isCorrect){
+        const className = isCorrect? 'correct-answer' : 'wrong-answer'
+        event.target.classList.toggle(className)
+    }
     return (
         <div className="question-container">
             <h2>{props.question}</h2>
 
             <button 
-                onClick={handleClick}
+                onClick={(event) => handleClick(event, props.answers[0].isCorrect)}
                 className ="question-option"
             >
-                {answers[0]}
+                {props.answers[0].answer}
             </button>
             <button 
-                onClick={handleClick}
+                onClick={(event) => handleClick(event, props.answers[1].isCorrect)}
                 className ="question-option"
             >
-                {answers[1]}
+                {props.answers[1].answer}
             </button>
             <button 
-                onClick={handleClick}
+                onClick={(event) => handleClick(event, props.answers[2].isCorrect)}
                 className ="question-option"
             >
-                {answers[2]}
+                {props.answers[2].answer}
             </button>
             <button 
-                onClick={handleClick}
+                onClick={(event) => handleClick(event, props.answers[3].isCorrect)}
                 className ="question-option"
             >
-                {answers[3]}
+                {props.answers[3].answer}
             </button>
             <hr/>
         </div>

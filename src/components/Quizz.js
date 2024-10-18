@@ -13,16 +13,28 @@ export default function Quizz(){
     if (!questions.length) {
         return <h1>Loading questions...</h1>;
     }
-    console.log(questions)
+
     return (
         <div className="questions-wrapper">
-            {questions.map((question, index) => 
-                <Question
-                    key={index}
-                    question={question.question}
-                    incorrect_answers={question.incorrect_answers}
-                    correct_answer={question.correct_answer}
-                />
+            {questions.map((question, index) => {
+                const answers = []
+                question.incorrect_answers.forEach((answer) => answers.push({
+                    answer: answer,
+                    isCorrect: false
+                }))
+                answers.splice(Math.floor(Math.random() * answers.length), 0, {
+                    answer: question.correct_answer,
+                    isCorrect: true
+                })
+                return (
+                    <Question
+                        key={index}
+                        question={question.question}
+                        answers={answers}
+                    />
+                )
+            }
+                
             )}
         </div>
     )

@@ -32,3 +32,18 @@
   margin-top: 10px;
   border-color: #DBDEF0;
 }
+
+.wrong-answer{
+  background-color: #F8BCBC;
+  border: none;
+  opacity: 50%;
+}
+
+.correct-answer{
+  background-color: #94D7A2;
+  border: none;
+}
+
+.unselected-answer{
+  opacity: 50%;
+}
