@@ -1,4 +1,4 @@
-import Question from './Question'
+import QuestionList from './QuestionList'
 import { useState, useEffect } from 'react'
 
 export default function Quizz(){
@@ -15,28 +15,13 @@ export default function Quizz(){
     }
 
     return (
-        <div className="questions-wrapper">
+        <div className="quizz-container">
             {/**create a button to check the answers */}
-            {questions.map((question, index) => {
-                const answers = []
-                question.incorrect_answers.forEach((answer) => answers.push({
-                    answer: answer,
-                    isCorrect: false
-                }))
-                answers.splice(Math.floor(Math.random() * answers.length), 0, {
-                    answer: question.correct_answer,
-                    isCorrect: true
-                })
-                return (
-                    <Question
-                        key={index}
-                        question={question.question}
-                        answers={answers}
-                    />
-                )
-            }
-                
-            )}
+            <QuestionList
+                questions={questions}
+            />
+            
+            <button className="results-button">Check answers</button>
         </div>
     )
 }
