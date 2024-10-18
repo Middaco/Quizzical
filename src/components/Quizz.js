@@ -16,6 +16,7 @@ export default function Quizz(){
 
     return (
         <div className="questions-wrapper">
+            {/**create a button to check the answers */}
             {questions.map((question, index) => {
                 const answers = []
                 question.incorrect_answers.forEach((answer) => answers.push({
