@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import StartComponent from './components/StartComponent';
 import Quizz from './components/Quizz';
 

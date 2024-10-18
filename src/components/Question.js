@@ -1,7 +1,7 @@
-export default function Question(){
+export default function Question(props){
     return (
         <div className="question-container">
-            <h2>This is my question</h2>
+            <h2>{props.question}</h2>
             <button className ="question-option">First option</button>
             <button className ="question-option">Second option</button>
             <button className ="question-option">Third option</button>
