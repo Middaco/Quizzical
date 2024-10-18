@@ -1,15 +1,29 @@
 export default function Question(props){
-    function handleClick(event, isCorrect){
-        const className = isCorrect? 'correct-answer' : 'wrong-answer'
-        event.target.classList.toggle(className)
+    function handleClick(event, isSelected){
+        event.target.classList.toggle('selected-answer')
+    }
+
+    function showResult(isSelected, isCorrect){
+        if(isCorrect){
+            return 'correct-answer'
+        }
+        if(isSelected){   
+            return 'wrong-answer'
+        }
+        
+
     }
     return (
         <div className="question-container">
             <h2>{props.question}</h2>
             {props.answers.map((answer) => (
                 <button 
-                    onClick={(event) => handleClick(event, answer.isCorrect)}
-                    className ="question-option"
+                    onClick={(event) => {
+                        answer.isSelected = !answer.isSelected
+                        handleClick(event, answer.isSelected)
+                    }}
+                    className ={`question-option ${props.showResult && showResult(answer.isSelected, answer.isCorrect)}`}
+                    
                 >
                     {answer.answer}
                 </button>

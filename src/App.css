@@ -44,6 +44,22 @@
   border: none;
 }
 
-.unselected-answer{
+.selected-answer{
   opacity: 50%;
+}
+
+.menu-button{
+  padding:15px 45px;
+  border-radius: 15px;
+  border: none;
+  background-color: #4D5B9E;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.quizz-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
