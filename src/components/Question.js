@@ -16,10 +16,10 @@ export default function Question(props){
     return (
         <div className="question-container">
             <h2>{props.question}</h2>
-            {props.answers.map((answer) => (
+            {props.answers.map((answer, indexOfAnswer) => (
                 <button 
                     onClick={(event) => {
-                        answer.isSelected = !answer.isSelected
+                        props.selectAnswer(answer, props.indexOfAnswers, indexOfAnswer)
                         handleClick(event, answer.isSelected)
                     }}
                     className ={`question-option ${props.showResult && showResult(answer.isSelected, answer.isCorrect)}`}

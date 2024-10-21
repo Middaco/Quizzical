@@ -4,14 +4,14 @@ export default function QuestionList(props){
     return (
         <div className='question-wrapper'>
             {props.questions.map((question, index) => {
-                console.log(props.answers)
                 return (
                     <Question
                         key={index}
+                        indexOfAnswers={index}
                         question={question.question}
                         answers={props.answers[index]}
-                        isSelected={false}
                         showResult={props.showResult}
+                        selectAnswer={props.selectAnswer}
                     />
                 )
                 }

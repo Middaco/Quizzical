@@ -45,6 +45,18 @@ export default function Quizz(){
         })
         setAnswers(tempArrayOfArrays)
     }
+
+    function selectAnswer(answer, index, indexOfAnswer){
+        console.log(answer, index, indexOfAnswer)
+        setAnswers(oldAnswers => {
+            oldAnswers[index][indexOfAnswer] = {
+                ...answer,
+                isSelected: !answer.isSelected
+            }
+            return oldAnswers
+        })
+        console.log(answers, index)
+    }
     
 
     return (
@@ -54,6 +66,7 @@ export default function Quizz(){
                 questions={questions}
                 answers={answers}
                 showResult={showResult}
+                selectAnswer={selectAnswer}
             />
             
             {
