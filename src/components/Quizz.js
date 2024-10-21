@@ -47,18 +47,27 @@ export default function Quizz(){
     }
 
     function selectAnswer(answer, index, indexOfAnswer){
-        console.log(answer, index, indexOfAnswer)
         setAnswers(oldAnswers => {
             oldAnswers[index][indexOfAnswer] = {
                 ...answer,
-                isSelected: !answer.isSelected
+                isSelected: true
             }
             return oldAnswers
         })
-        console.log(answers, index)
+    }
+
+    function deselectAllAnswers(indexOfAnswers){
+        setAnswers(oldAnswers => {
+            let i = 0;
+            for(i = 0; i < oldAnswers[indexOfAnswers].length; i++){
+                oldAnswers[indexOfAnswers][i].isSelected = false;
+            }
+            
+            return oldAnswers
+        })
+        console.log(answers)
     }
     
-
     return (
         <div className="quizz-container">
             {/**create a button to check the answers */}
@@ -67,6 +76,7 @@ export default function Quizz(){
                 answers={answers}
                 showResult={showResult}
                 selectAnswer={selectAnswer}
+                deselectAllAnswers={deselectAllAnswers}
             />
             
             {

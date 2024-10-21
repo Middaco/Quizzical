@@ -12,6 +12,7 @@ export default function QuestionList(props){
                         answers={props.answers[index]}
                         showResult={props.showResult}
                         selectAnswer={props.selectAnswer}
+                        deselectAllAnswers={props.deselectAllAnswers}
                     />
                 )
                 }

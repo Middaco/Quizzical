@@ -1,5 +1,9 @@
 export default function Question(props){
-    function handleClick(event, isSelected){
+    function handleClick(event, indexOfAnswers){
+        const selectedAnswers = document.getElementsByClassName("question-option " + indexOfAnswers + " selected-answer")
+        for(let indexOfAnswer = 0; indexOfAnswer < selectedAnswers.length; indexOfAnswer++){
+            selectedAnswers[indexOfAnswer].classList.toggle('selected-answer')
+        }
         event.target.classList.toggle('selected-answer')
     }
 
@@ -19,11 +23,12 @@ export default function Question(props){
             {props.answers.map((answer, indexOfAnswer) => (
                 <button 
                     onClick={(event) => {
+                        props.deselectAllAnswers(props.indexOfAnswers)
                         props.selectAnswer(answer, props.indexOfAnswers, indexOfAnswer)
-                        handleClick(event, answer.isSelected)
+                        handleClick(event, props.indexOfAnswers)
                     }}
-                    className ={`question-option ${props.showResult && showResult(answer.isSelected, answer.isCorrect)}`}
-                    
+                    className ={`question-option ${props.indexOfAnswers} ${props.showResult && showResult(answer.isSelected, answer.isCorrect)}`}
+    
                 >
                     {answer.answer}
                 </button>
