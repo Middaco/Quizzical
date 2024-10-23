@@ -1,3 +1,5 @@
+import { parseEntities } from "parse-entities"
+
 export default function Question(props){
     function handleClick(event, indexOfAnswers){
         const selectedAnswers = document.getElementsByClassName("question-option " + indexOfAnswers + " selected-answer")
@@ -19,7 +21,7 @@ export default function Question(props){
     }
     return (
         <div className="question-container">
-            <h2>{props.question}</h2>
+            <h2>{parseEntities(props.question)}</h2>
             {props.answers.map((answer, indexOfAnswer) => (
                 <button 
                     onClick={(event) => {
@@ -30,7 +32,7 @@ export default function Question(props){
                     className ={`question-option ${props.indexOfAnswers} ${props.showResult && showResult(answer.isSelected, answer.isCorrect)}`}
     
                 >
-                    {answer.answer}
+                    {parseEntities(answer.answer)}
                 </button>
             ))}
             

@@ -5,15 +5,20 @@ export default function Quizz(){
     const [questions, setQuestions] = useState([])
     const [showResult, setShowResult] = useState(false)
     const [answers, setAnswers] = useState([])
+    const [signal, setSignal] = useState(0)
 
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&type=multiple')
             .then(response => response.json())
             .then(data => setQuestions(data.results))
-    }, [])
+    }, [signal])
 
     function handleClick(){
         setShowResult(oldValue => !oldValue)
+        if(showResult){
+            setSignal(oldSignal => oldSignal + 1)
+            setAnswers([])
+        }
     }
 
     if (!questions.length) {
@@ -24,7 +29,6 @@ export default function Quizz(){
     //not change the order of the Answers. Also this will help on keeping the 
     //selected answer SELECTED
     if(!answers.length){
-        console.log("Computing Answers")
         const tempArrayOfArrays = []
         let tempArrayOfAnswers = []
         questions.forEach(question => {
@@ -65,7 +69,6 @@ export default function Quizz(){
             
             return oldAnswers
         })
-        console.log(answers)
     }
 
     function computeNumberOfCorrectAnswers(){
