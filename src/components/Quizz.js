@@ -67,6 +67,18 @@ export default function Quizz(){
         })
         console.log(answers)
     }
+
+    function computeNumberOfCorrectAnswers(){
+        let correctAnswersSelected = 0
+        answers.forEach(answerList =>{ 
+            answerList.forEach(answer =>{
+                if(answer.isCorrect && answer.isSelected){
+                    correctAnswersSelected += 1
+                } 
+            })
+        })
+        return correctAnswersSelected
+    }
     
     return (
         <div className="quizz-container">
@@ -82,7 +94,7 @@ export default function Quizz(){
             {
                 showResult?
                 <div style={{display:'flex', flexDirection:'row', alignItems:"baseline"}}>
-                    <p>You scored /5 correct answers</p>
+                    <p>You scored {computeNumberOfCorrectAnswers()}/5 correct answers</p>
                     <button
                         style={{marginInlineStart:'10px'}}
                         className='menu-button'
