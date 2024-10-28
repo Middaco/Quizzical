@@ -14,11 +14,12 @@ export default function Quizz(){
     }, [signal])
 
     function handleClick(){
-        setShowResult(oldValue => !oldValue)
         if(showResult){
+            setQuestions([])
             setSignal(oldSignal => oldSignal + 1)
             setAnswers([])
         }
+        setShowResult(oldValue => !oldValue)
     }
 
     if (!questions.length) {
